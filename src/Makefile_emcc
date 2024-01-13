@@ -1,0 +1,28 @@
+Compiler = emcc
+CmpFlags = -Wall -Wextra -Werror
+
+OUTN = libft.js
+OUTPUT_DIR = ./emcc
+
+files = main
+
+CFILES = $(files:%=%.c)
+NAME = $(OUTPUT_DIR)/$(OUTN)
+
+$(NAME): $(CFILES)
+	$(Compiler) $(CmpFlags) $(CFILES) -o $(NAME)
+
+all: $(OUTPUT_DIR) $(NAME)
+
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
+
+clean:
+	rm -f $(NAME)
+
+fclean: clean
+	rm -f $(NAME) $(NAME:.js=.wasm)
+
+re: fclean all
+
+.PHONY: all clean fclean re

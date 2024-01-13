@@ -1,2 +1,3 @@
-src/*.o
-src/libft
+src/emcc/*
+!src/emcc/index.html
+src/gcc

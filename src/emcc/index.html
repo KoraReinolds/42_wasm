@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAssembly App</title>
+</head>
+<body>
+    <script>
+    WebAssembly.instantiateStreaming(fetch('./libft.wasm'))
+        .then(module => {
+            const exports = module.instance.exports;
+            console.log('Result from WASM:', exports.main());
+        }).catch(error => {
+            console.error('Error loading WASM:', error);
+        });
+    </script>
+</body>
+</html>

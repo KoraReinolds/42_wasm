@@ -6,14 +6,13 @@ OUTN = libft
 files = main
 
 CFILES = $(files:%=%.c)
-OFILES = $(files:%=%.o)
-
-NAME = $(OUTN)
+OFILES = $(files:%=./gcc/%.o)
+NAME = ./gcc/$(OUTN)
 
 $(NAME): $(OFILES)
 	$(Compiler) $(CmpFlags) $(OFILES) -o $(NAME)
 
-%.o: %.c
+./gcc/%.o: %.c
 	$(Compiler) $(CmpFlags) -c $< -o $@
 
 all: $(NAME)

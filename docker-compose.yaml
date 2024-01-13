@@ -1,8 +1,26 @@
 version: '3'
 services:
-  app:
+  gcc:
     build:
       context: .
+      dockerfile: Dockerfile.gcc
     volumes:
       - ./src:/app/src
     tty: true
+
+  emcc:
+    build:
+      context: .
+      dockerfile: Dockerfile.emcc
+    volumes:
+      - ./src:/app/src
+    command: tail -f /dev/null
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "8080:80"
