@@ -1,19 +1,19 @@
+include common.mk
+
 Compiler = gcc
-CmpFlags = -Wall -Wextra -Werror
 
 OUTN = libft
-
-files = main
+OUTPUT_DIR = ./gcc
 
 CFILES = $(files:%=%.c)
 OFILES = $(files:%=./gcc/%.o)
-NAME = ./gcc/$(OUTN)
+NAME = $(OUTPUT_DIR)/$(OUTN)
 
 $(NAME): $(OFILES)
-	$(Compiler) $(CmpFlags) $(OFILES) -o $(NAME)
+	@$(Compiler) $(CmpFlags) $(OFILES) -o $(NAME)
 
 ./gcc/%.o: %.c
-	$(Compiler) $(CmpFlags) -c $< -o $@
+	@$(Compiler) $(CmpFlags) -c $< -o $@
 
 all: $(NAME)
 

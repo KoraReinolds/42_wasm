@@ -1,16 +1,15 @@
+include common.mk
+
 Compiler = emcc
-CmpFlags = -Wall -Wextra -Werror
 
 OUTN = libft.js
 OUTPUT_DIR = ./emcc
-
-files = main
 
 CFILES = $(files:%=%.c)
 NAME = $(OUTPUT_DIR)/$(OUTN)
 
 $(NAME): $(CFILES)
-	$(Compiler) $(CmpFlags) $(CFILES) -o $(NAME)
+	@$(Compiler) $(CmpFlags) $(CFILES) -o $(NAME) -s FORCE_FILESYSTEM=1
 
 all: $(OUTPUT_DIR) $(NAME)
 

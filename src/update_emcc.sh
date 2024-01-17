@@ -1,3 +1,3 @@
 #!/bin/bash
 
-make -f ./Makefile_emcc
+make -f ./emcc.mk

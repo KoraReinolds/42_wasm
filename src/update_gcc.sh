@@ -1,4 +1,4 @@
 #!/bin/bash
 
-make -f ./Makefile_gcc
-exec /app/src/libft
+make -f ./gcc.mk
+exec /app/src/gcc/libft
