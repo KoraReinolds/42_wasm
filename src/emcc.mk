@@ -2,26 +2,21 @@ include common.mk
 
 Compiler = emcc
 
-OUTN = libft.js
-OUTPUT_DIR = ./emcc
+OUT_NAME = index.js
+OUTPUT_DIR = ./emcc/$(FILLIT_NAME)
 
-CFILES = $(files:%=%.c)
-NAME = $(OUTPUT_DIR)/$(OUTN)
+CFILES = $(FILLIT_DIR)/$(files:%=%.c)
+NAME = $(OUTPUT_DIR)/$(OUT_NAME)
 
 $(NAME): $(CFILES)
+	@mkdir -p $(OUTPUT_DIR)
 	@$(Compiler) $(CmpFlags) $(CFILES) -o $(NAME) -s FORCE_FILESYSTEM=1
 
 all: $(OUTPUT_DIR) $(NAME)
 
-$(OUTPUT_DIR):
-	mkdir -p $(OUTPUT_DIR)
-
-clean:
-	rm -f $(NAME)
-
-fclean: clean
+fclean:
 	rm -f $(NAME) $(NAME:.js=.wasm)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all fclean re

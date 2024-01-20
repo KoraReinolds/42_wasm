@@ -1,27 +1,13 @@
 include common.mk
 
-Compiler = gcc
-
-OUTN = libft
-OUTPUT_DIR = ./gcc
-
-CFILES = $(files:%=%.c)
-OFILES = $(files:%=./gcc/%.o)
-NAME = $(OUTPUT_DIR)/$(OUTN)
-
-$(NAME): $(OFILES)
-	@$(Compiler) $(CmpFlags) $(OFILES) -o $(NAME)
-
-./gcc/%.o: %.c
-	@$(Compiler) $(CmpFlags) -c $< -o $@
-
-all: $(NAME)
+all:
+	$(MAKE) -C $(FILLIT_DIR)
 
 clean:
-	rm -f $(NAME) $(OFILES)
+	$(MAKE) -C $(FILLIT_DIR) clean
 
 fclean: clean
-	rm -f $(NAME)
+	$(MAKE) -C $(FILLIT_DIR) fclean
 
 re: fclean all
 

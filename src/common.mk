@@ -1,5 +1,6 @@
-# CmpFlags = -Wall -Wextra -Werror
-CmpFlags =
+include ./fillit/src/files.mk
 
-files = main \
-	ft_putchar_fd
+# CmpFlags = -Wall -Wextra -Werror
+
+FILLIT_NAME = fillit
+FILLIT_DIR = ./$(FILLIT_NAME)/src
